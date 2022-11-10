@@ -1,12 +1,9 @@
 class Solution:
     def removeDuplicates(self, s: str) -> str:
-        arr=[i for i in s]
         stack=[]
-        i=0
-        while i<len(arr):
-            if stack and stack[-1]==arr[i]:
+        for i in s:
+            if stack and stack[-1]==i:
                 stack.pop()
             else:
-                stack.append(arr[i])
-            i+=1
+                stack.append(i)
         return "".join(stack)
