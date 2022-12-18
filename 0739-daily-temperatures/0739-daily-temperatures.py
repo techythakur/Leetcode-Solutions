@@ -8,5 +8,3 @@ class Solution:
                 res[stackind]=(i-stackind)
             stack.append([t,i])
         return res
-                
-        
