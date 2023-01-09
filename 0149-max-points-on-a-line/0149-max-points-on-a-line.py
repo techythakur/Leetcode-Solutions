@@ -1,14 +1,21 @@
 class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
-        ll = len(points) 
-        if ll == 1: return 1
-        elif ll == 2: return 2
-        else:
-            ans = 0
-            for i in list(combinations(points,2)):
-                cnt = 0
-                for j in points:
-                    if (j[1] - i[0][1]) * (i[1][0] - i[0][0]) == (j[0] - i[0][0]) * (i[1][1] - i[0][1]):
-                        cnt += 1
-                ans = max(ans, cnt)
-            return ans
+        d={}
+        maxm=0
+        for i in range(len(points)-maxm-1):
+            i_max=0
+            for j in range(i+1,len(points)):
+                if (points[j][0]-points[i][0])==0:
+                    slope=1000000001
+                else:
+                    slope= (points[j][1]-points[i][1])/(points[j][0]-points[i][0])
+                    
+                if slope in d.keys():
+                    d[slope]+=1
+                else:
+                    d[slope]=1
+                
+                i_max=max(i_max,d[slope])
+            d.clear()
+            maxm=max(maxm,i_max)
+        return maxm+1
