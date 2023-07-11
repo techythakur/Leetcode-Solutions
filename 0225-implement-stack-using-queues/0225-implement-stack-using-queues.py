@@ -1,24 +1,31 @@
 class MyStack:
 
     def __init__(self):
-        self.stack=[]
+        self.queue1=[]
+        self.queue2=[]
 
     def push(self, x: int) -> None:
-        self.stack.append(x)
+        self.queue1.append(x)
 
     def pop(self) -> int:
-        if self.stack:
-            x=self.stack.pop()
+        if self.queue1:
+            for i in range(len(self.queue1)-1):
+                x=self.queue1.pop(0)
+                self.queue2.append(x)
+            x=self.queue1.pop()
+            print(x)
+            while self.queue2:
+                self.queue1.append(self.queue2.pop(0))
             return x
         return None
         
 
     def top(self) -> int:
-        return self.stack[-1]
+        return self.queue1[-1]
         
 
     def empty(self) -> bool:
-        if self.stack:
+        if self.queue1:
             return False
         return True
         
