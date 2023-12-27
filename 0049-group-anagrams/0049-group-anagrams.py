@@ -1,14 +1,8 @@
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        def sortString(st):
-            stl = [i for i in st]
-            stl.sort()
-            return "".join(stl)
-        
-        
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:        
         res = {}
         for i in strs:
-            sorte = sortString(i)
+            sorte = "".join(sorted(i))
             if sorte in res:
                 res[sorte].append(i)
             else:
