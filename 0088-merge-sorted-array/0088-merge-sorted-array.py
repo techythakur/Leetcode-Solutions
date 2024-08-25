@@ -4,8 +4,7 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
         for i in range(m+n):
-            if i>=m:
-                nums1[i]=nums2[i-m]
+            if i<m:
+                continue
+            nums1[i] = nums2[i-m]
         nums1.sort()
-        return nums1
-                
